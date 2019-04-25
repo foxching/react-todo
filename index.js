@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import App from './Components/App';
-import './style.css';
+import './Styles/style.css';
 
 
 
