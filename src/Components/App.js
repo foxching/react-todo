@@ -11,6 +11,10 @@ class App extends Component {
         id:2,
         title:'Coding',
         completed:true
+      },{
+        id:3,
+        title:'Sex',
+        completed:true
       }]
     }
   render(){
