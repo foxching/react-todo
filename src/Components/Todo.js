@@ -14,7 +14,7 @@ class Todo extends Component {
 	render(){
 		return(
 			<div style={this.getStyle()}>
-				<input type="checkbox" />{''}
+				<input type="checkbox" onChange={} />{''}
 				{this.props.todo.title}
 			</div>
 
