@@ -12,15 +12,28 @@ class Todo extends Component {
 	}
 
 	render(){
+		const { id, title, completed} = this.props.todo
+		
 		return(
 			<div style={this.getStyle()}>
-				<input type="checkbox" onChange={} />{''}
-				{this.props.todo.title}
+				<input type="checkbox" onChange={(e) => this.props.markComplete(id)} checked={!!completed}/>{''}
+				{title}
+				<button style={btnStyle} onClick={(e) => this.props.deleteTodo(id)}>X</button>
 			</div>
 
 
 		)
 	}
+}
+
+const btnStyle = {
+	background:'#ff0000',
+	color:'#fff',
+	border:'none',
+	padding:'5px 9px',
+	borderRadius:'50%',
+	float:'right',
+	cursor:'pointer'
 }
 
 export default Todo;

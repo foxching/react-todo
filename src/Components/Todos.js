@@ -8,7 +8,7 @@ class Todos extends Component {
     return (
       <div>
         {this.props.todos.map((todo) => (
-          <Todo key={todo.id} todo={todo}/>
+          <Todo key={todo.id} todo={todo} markComplete={this.props.markComplete} deleteTodo={this.props.deleteTodo}/>
         ))}
       </div>
 
