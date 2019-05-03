@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Todos from './Todos'
 import Header from './Layouts/Header'
 import AddTodo from './AddTodo';
+import uuid from 'uuid';
 
 class App extends Component {
   state = {
@@ -37,13 +38,24 @@ class App extends Component {
     this.setState(({ todos }))
   }
   
+  addTodo = (title) => {
+
+    const newTodo = {  
+      id:uuid(),
+      title,
+      completed:false
+    }
+
+    this.setState( ({ todos:this.state.todos.concat(newTodo)}))
+
+  }
   render(){
     
     return (
       <div>
         <div className="container">
           <Header />
-          <AddTodo />
+          <AddTodo  addTodo={this.addTodo}/>
           <Todos todos={this.state.todos} markComplete={this.markComplete} deleteTodo={this.deleteTodo}/>
         </div>
       </div>
