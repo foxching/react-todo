@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => (
     
     <div style={headerStyle}>
         <h1>Todo List</h1>
+        <NavLink to="/" activeClassName="is-active" style={LinkStyle} exact={true}>Home|</NavLink>
+        <NavLink to="/about" activeClassName="is-active" style={LinkStyle}>About</NavLink>
     </div>
 )
 
@@ -12,6 +15,11 @@ const headerStyle = {
     color:'#fff',
     padding:'10px',
     textAlign:'center'
+}
+
+const LinkStyle = {
+    color:'#fff',
+    textDecoration:'none'
 }
 
 

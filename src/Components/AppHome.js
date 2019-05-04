@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
-import Todos from './Todos'
-import Header from './Layouts/Header'
+import Todos from './Todos';
 import AddTodo from './AddTodo';
 import uuid from 'uuid';
 
 class App extends Component {
   state = {
       todos:[{
-        id:1,
+        id:uuid(),
         title:'Trowh trash',
         completed:false
       },{
-        id:2,
+        id:uuid(),
         title:'Coding',
         completed:true
       },{
-        id:3,
+        id:uuid(),
         title:'Sex',
         completed:true
       }]
@@ -53,8 +52,7 @@ class App extends Component {
     
     return (
       <div>
-        <div className="container">
-          <Header />
+        <div>
           <AddTodo  addTodo={this.addTodo}/>
           <Todos todos={this.state.todos} markComplete={this.markComplete} deleteTodo={this.deleteTodo}/>
         </div>
