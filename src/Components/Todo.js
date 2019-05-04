@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class Todo extends Component {
 		
@@ -25,6 +26,13 @@ class Todo extends Component {
 		)
 	}
 }
+
+
+Todo.propTypes = {
+	todo:PropTypes.object.isRequired,
+	markComplete:PropTypes.func.isRequired,
+	deleteTodo:PropTypes.func.isRequired
+  }
 
 const btnStyle = {
 	background:'#ff0000',
