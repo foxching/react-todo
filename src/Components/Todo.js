@@ -34,7 +34,7 @@ Todo.propTypes = {
 	todo:PropTypes.object.isRequired,
 	markComplete:PropTypes.func.isRequired,
 	deleteTodo:PropTypes.func.isRequired
-  }
+}
 
 const btnStyle1 = {
 	color:'#008000',
