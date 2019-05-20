@@ -14,12 +14,14 @@ class Todo extends Component {
 
 	render(){
 		const { id, title, completed} = this.props.todo
+		const {markComplete, deleteTodo} = this.props
 		
 		return(
 			<div style={this.getStyle()}>
-				<input type="checkbox" onChange={(e) => this.props.markComplete(id)} checked={!!completed}/>{''}
-				{title}
-				<button style={btnStyle} onClick={(e) => this.props.deleteTodo(id)}>X</button>
+				<input type="checkbox" onChange={(e) => markComplete(id)} checked={!!completed}/>{''}
+				 {title}
+				<button style={btnStyle2} onClick={(e) => deleteTodo(id)}><i className="fas fa-trash"></i></button>
+				<button style={btnStyle1} onClick={(e) => deleteTodo(id)}><i className="fas fa-pen"></i></button>	
 			</div>
 
 
@@ -34,12 +36,19 @@ Todo.propTypes = {
 	deleteTodo:PropTypes.func.isRequired
   }
 
-const btnStyle = {
-	background:'#ff0000',
-	color:'#fff',
+const btnStyle1 = {
+	color:'#008000',
+	background:'#f4f4f4',
 	border:'none',
 	padding:'5px 9px',
-	borderRadius:'50%',
+	float:'right',
+	cursor:'pointer'
+}
+const btnStyle2 = {
+	color:'#FF0000',
+	background:'#f4f4f4',
+	border:'none',
+	padding:'5px 9px',
 	float:'right',
 	cursor:'pointer'
 }

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const Header = () => (
     
     <div style={headerStyle}>
-        <h1>Todo List</h1>
+        <h1>Simple Todo</h1>
         <NavLink to="/" activeClassName="is-active" style={LinkStyle} exact={true}>Home|</NavLink>
         <NavLink to="/about" activeClassName="is-active" style={LinkStyle}>About</NavLink>
     </div>

@@ -3,34 +3,20 @@ import PropTypes from 'prop-types'
 
 
 class AddTodo extends Component {
-    state = {
-        title:''
-    }
-
-    onSubmit = (e) => {
-        e.preventDefault();
-
-        this.props.addTodo(this.state.title);
-        this.setState({ title:''});
-    }
-
-    onChange = (e) => {
-        this.setState({ [e.target.name]:e.target.value})
-    }
-
-
+    
     render(){
+        const { title, handleChange, handleSubmit } = this.props
 
         return (
             <div>
-                <form onSubmit={this.onSubmit} style={{display:'flex'}}>
+                <form onSubmit={handleSubmit} style={{display:'flex'}}>
                     <input 
                         type="text" 
                         name="title" 
                         placeholder="Add Todo here...."
                         style={{ padding:'10px', flex:'10'}}
-                        value={this.state.title}
-                        onChange={this.onChange}
+                        value={title}
+                        onChange={handleChange}
                     />
                     <input 
                         type="submit" 
@@ -46,7 +32,9 @@ class AddTodo extends Component {
 
 
 AddTodo.propTypes = {
-    addTodo:PropTypes.func.isRequired
+    title:PropTypes.string.isRequired,
+    handleChange:PropTypes.func.isRequired,
+    handleSubmit:PropTypes.func.isRequired
 }
 
 export default AddTodo;

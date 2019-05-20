@@ -1,32 +1,25 @@
-// import React, { Component } from 'react'
+import React, { Component } from 'react'
 
 
-// class SearchTodo extends Component {
-//     state={
-//         search:''
-//     }
+class SearchTodo extends Component {
+ 
 
-//     onChange = (e) => {
+    render(){
         
-//         e.preventDefault()
-//         this.props.filterTodos(this.state.search)
-//         this.setState({search:e.target.value})
-//     }
+        return (
+            <div style={{display:'flex'}}>
+                <input 
+                    type="text"
+                    name="search"
+                    style={{padding:'10px', flexGrow:'1'}} 
+                    value={this.props.search}
+                    onChange={this.props.handleChange}
+                    placeholder="Search Todo here......"
+                />
+            </div>
+        );
+    }
 
-//     render(){
-        
-//         return (
-//             <div style={{display:'flex'}}>
-//                 <input 
-//                     type="text" value={this.state.search}  
-//                     style={{padding:'10px', flexGrow:'1'}} 
-//                     onChange={this.onChange}
-//                     placeholder="Search Todo here......"
-//                 />
-//             </div>
-//         );
-//     }
+}
 
-// }
-
-// export default SearchTodo
+export default SearchTodo

@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import Todos from './Todos';
 import AddTodo from './AddTodo';
+import SearchTodo from  './SearchTodo'
 //import uuid from 'uuid';
 import axios from 'axios'
 
 
 class App extends Component {
   state = {
-      todos:[]
+      todos:[],
+      search:'',
+      title:''
     }
   
   componentDidMount(){
@@ -15,6 +18,26 @@ class App extends Component {
       .then(res => this.setState({ todos:res.data}))
   }
 
+  
+  handleSubmit = e => {
+    e.preventDefault()
+
+    axios.post('https://jsonplaceholder.typicode.com/todos', {
+      title:this.state.title,
+      completed:false
+    })
+    .then(res => this.setState( ({ todos:this.state.todos.concat(res.data)})) )
+
+    this.setState({title:''})
+
+  }
+
+  handleChange = e => {
+    this.setState({
+      [e.target.name]:e.target.value
+    })
+  }
+  
   markComplete = (id) => {
     const todos = this.state.todos.map(todo => {
       if(todo.id === id){
@@ -27,42 +50,36 @@ class App extends Component {
   }
 
   deleteTodo = (id) => {
-    
-    //const todos= this.state.todos.filter(todo => todo.id !== id)
-    //this.setState(({ todos }))
-
     axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
       .then(res => this.setState({ todos:this.state.todos.filter(todo => todo.id !== id)}))
 
   }
   
-  addTodo = (title) => {
 
-    // const newTodo = {  
-    //   id:uuid(),
-    //   title,
-    //   completed:false
-    // }
-
-    axios.post('https://jsonplaceholder.typicode.com/todos', {
-      title,
-      completed:false
-    })
-    .then(res => this.setState( ({ todos:this.state.todos.concat(res.data)})) )
-
-  }
 
   render(){
+    
+    const filterTodos = this.state.todos.filter(todo => {
+      return todo.title.indexOf(this.state.search) !== -1
+    })
 
     return (
       <div>
         <div>
+          <SearchTodo 
+            search={this.state.search} 
+            handleChange={this.handleChange} 
+          />
           <Todos 
-            todos={this.state.todos} 
+            todos={filterTodos} 
             markComplete={this.markComplete} 
             deleteTodo={this.deleteTodo}
           />
-          <AddTodo  addTodo={this.addTodo}/>
+          <AddTodo  
+            title={this.state.title}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+          />
         </div>
       </div>
 

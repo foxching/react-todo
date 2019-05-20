@@ -3,12 +3,12 @@ import React from 'react';
 const AboutPage = () => (
   <div>
      <br/>
-    <h3>React Todo Version 1.0.0</h3>
-    
+    <h3>Simple Todo Ver 1.0.0</h3>
     <hr></hr>
-
-    <br/> <br/> <br/>
-    <p>This is a todo application built with ReactJs</p>
+    <br/> <br/>
+    <p>This is a todo application built with ReactJS</p>
+    <br/> <br/>
+    <h5>Developer:<b>Rechie Lagria</b></h5>
   </div>
 );
 
