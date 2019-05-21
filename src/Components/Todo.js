@@ -7,7 +7,16 @@ class Todo extends Component {
 		editing:false
 	}
 	
+	componentDidUpdate() {
+        let text
+        if(this.state.editing) {
+            text = this._newText
+            text.focus()
+            text.select()
+        }
 
+	}
+	
 	edit = () => {
 		this.setState({ editing:true})
 	}
