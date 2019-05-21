@@ -7,7 +7,7 @@ class Todos extends Component {
   
   render(){
     
-    const { todos, markComplete, deleteTodo} = this.props
+    const { todos, markComplete, handleDeleteTodo, handleEditTodo} = this.props
 
     return (
       <div>
@@ -19,8 +19,9 @@ class Todos extends Component {
                   key={todo.id} 
                   todo={todo} 
                   markComplete={markComplete} 
-                  deleteTodo={deleteTodo}
-                  />
+                  handleDeleteTodo={handleDeleteTodo}
+                  handleEditTodo={handleEditTodo}
+                />
               ))  
             }
         
@@ -35,7 +36,8 @@ class Todos extends Component {
 Todos.propTypes = {
   todos:PropTypes.array.isRequired,
   markComplete:PropTypes.func.isRequired,
-  deleteTodo:PropTypes.func.isRequired
+  handleDeleteTodo:PropTypes.func.isRequired,
+  handleEditTodo:PropTypes.func.isRequired
 }
 
 

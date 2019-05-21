@@ -10,7 +10,8 @@ class App extends Component {
   state = {
       todos:[],
       search:'',
-      title:''
+      title:'',
+      editTodo:false
     }
   
   componentDidMount(){
@@ -28,7 +29,10 @@ class App extends Component {
     })
     .then(res => this.setState( ({ todos:this.state.todos.concat(res.data)})) )
 
-    this.setState({title:''})
+    this.setState({
+      title:'',
+      editTodo:false,
+    })
 
   }
 
@@ -38,7 +42,7 @@ class App extends Component {
     })
   }
   
-  markComplete = (id) => {
+  markComplete = id => {
     const todos = this.state.todos.map(todo => {
       if(todo.id === id){
         todo.completed = !todo.completed
@@ -49,9 +53,21 @@ class App extends Component {
     this.setState( ({ todos }))
   }
 
-  deleteTodo = (id) => {
+  handleDeleteTodo = id => {
     axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
       .then(res => this.setState({ todos:this.state.todos.filter(todo => todo.id !== id)}))
+
+  }
+
+  handleEditTodo = id => {
+    const todos = this.state.todos.filter(todo => todo.id !== id)
+    const selected = this.state.todos.find(todo => todo.id === id)
+
+    this.setState({
+      todos,
+      title:selected.title,
+      editTodo:true
+    })
 
   }
   
@@ -73,12 +89,14 @@ class App extends Component {
           <Todos 
             todos={filterTodos} 
             markComplete={this.markComplete} 
-            deleteTodo={this.deleteTodo}
+            handleDeleteTodo={this.handleDeleteTodo}
+            handleEditTodo={this.handleEditTodo}
           />
           <AddTodo  
             title={this.state.title}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
+            editTodo={this.state.editTodo}
           />
         </div>
       </div>

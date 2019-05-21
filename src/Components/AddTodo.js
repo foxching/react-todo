@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 class AddTodo extends Component {
     
     render(){
-        const { title, handleChange, handleSubmit } = this.props
+        const { title, handleChange, handleSubmit, editTodo } = this.props
 
         return (
             <div>
@@ -20,7 +20,7 @@ class AddTodo extends Component {
                     />
                     <input 
                         type="submit" 
-                        value="Submit"
+                        value={editTodo ? "Edit" : "Add"}
                         style={{flex:'1'}}
                         className="btn"
                     />
