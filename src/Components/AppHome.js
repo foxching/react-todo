@@ -59,16 +59,13 @@ class App extends Component {
 
   }
 
-  handleEditTodo = id => {
-    const todos = this.state.todos.filter(todo => todo.id !== id)
-    const selected = this.state.todos.find(todo => todo.id === id)
-
-    this.setState({
-      todos,
-      title:selected.title,
-      editTodo:true
-    })
-
+  updateTodo = (newText, todo) => {
+    const todos = [...this.state.todos];
+		const index = todos.indexOf(todo)
+		todos[index] = {...todo}
+		todos[index].title = newText
+    this.setState({ todos})
+    
   }
   
 
@@ -90,7 +87,7 @@ class App extends Component {
             todos={filterTodos} 
             markComplete={this.markComplete} 
             handleDeleteTodo={this.handleDeleteTodo}
-            handleEditTodo={this.handleEditTodo}
+            updateTodo={this.updateTodo}
           />
           <AddTodo  
             title={this.state.title}
