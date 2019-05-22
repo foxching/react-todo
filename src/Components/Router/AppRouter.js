@@ -1,13 +1,11 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AppHome from '../AppHome';
 import Header from '../Layouts/Header';
-import AboutPage from '../Pages/AboutPage'
+import AboutPage from '../Pages/AboutPage';
 
-
-const AppRouter =() => (
-
-    <BrowserRouter>
+const AppRouter = () => (
+  <BrowserRouter>
     <div className="container">
       <Header />
       <Switch>
@@ -16,7 +14,6 @@ const AppRouter =() => (
       </Switch>
     </div>
   </BrowserRouter>
+);
 
-)
-
-export default AppRouter
+export default AppRouter;
