@@ -30,7 +30,7 @@ class AddTodo extends Component {
 
 AddTodo.propTypes = {
   title: PropTypes.string.isRequired,
-  editTodo: PropTypes.string.isRequired,
+  editTodo: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired
 };

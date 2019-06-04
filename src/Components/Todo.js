@@ -25,7 +25,7 @@ class Todo extends Component {
 
   handleSave = e => {
     e.preventDefault();
-    this.props.updateTodo(this._newText.value, this.props.todo);
+    this.props.updateTodo(this._newText.value, this.props.todo.id);
     this.setState({
       editing: false
     });

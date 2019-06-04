@@ -60,11 +60,18 @@ class App extends Component {
     );
   };
 
-  updateTodo = (newText, todo) => {
-    const todos = [...this.state.todos];
-    const index = todos.indexOf(todo);
-    todos[index] = { ...todo };
-    todos[index].title = newText;
+  updateTodo = (newText, id) => {
+    const todos = this.state.todos.map(todo => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          title: newText
+        };
+      } else {
+        return todo;
+      }
+    });
+
     this.setState({ todos });
   };
 
