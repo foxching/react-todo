@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Todo from './Todo';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import Todo from "./Todo";
+import PropTypes from "prop-types";
 
 class Todos extends Component {
   render() {
@@ -9,10 +9,10 @@ class Todos extends Component {
     return (
       <div>
         {todos.length === 0 && (
-          <p style={{ padding: '10px', fontSize: '15px' }}>No todos found!!</p>
+          <p style={{ padding: "10px", fontSize: "15px" }}>No todos found!!</p>
         )}
 
-        {todos.map(todo => (
+        {todos.map((todo) => (
           <Todo
             key={todo.id}
             todo={todo}
@@ -30,7 +30,7 @@ Todos.propTypes = {
   todos: PropTypes.array.isRequired,
   markComplete: PropTypes.func.isRequired,
   handleDeleteTodo: PropTypes.func.isRequired,
-  updateTodo: PropTypes.func.isRequired
+  updateTodo: PropTypes.func.isRequired,
 };
 
 export default Todos;

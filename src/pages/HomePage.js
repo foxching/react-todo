@@ -1,48 +1,49 @@
-import React, { Component } from 'react';
-import Todos from './Todos';
-import AddTodo from './AddTodo';
-import SearchTodo from './SearchTodo';
-//import uuid from 'uuid';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
+import Todos from "../components/Todos/Todos";
+import AddTodo from "../components/Todos/AddTodo";
+import SearchTodo from "../components/Todos/SearchTodo";
 
-class App extends Component {
+class HomePage extends Component {
   state = {
     todos: [],
-    search: '',
-    title: '',
-    editTodo: false
+    search: "",
+    title: "",
+    editTodo: false,
   };
 
   componentDidMount() {
     axios
-      .get('https://jsonplaceholder.typicode.com/todos?_limit=10')
-      .then(res => this.setState({ todos: res.data }));
+      .get("https://jsonplaceholder.typicode.com/todos?_limit=10")
+      .then((res) => this.setState({ todos: res.data }));
   }
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
 
     axios
-      .post('https://jsonplaceholder.typicode.com/todos', {
+      .post("https://jsonplaceholder.typicode.com/todos", {
         title: this.state.title,
-        completed: false
+        completed: false,
       })
-      .then(res => this.setState({ todos: this.state.todos.concat(res.data) }));
+      .then((res) =>
+        this.setState({ todos: this.state.todos.concat(res.data) })
+      );
 
     this.setState({
-      title: '',
-      editTodo: false
+      title: "",
+      editTodo: false,
     });
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  markComplete = id => {
-    const todos = this.state.todos.map(todo => {
+  markComplete = (id) => {
+    const todos = this.state.todos.map((todo) => {
       if (todo.id === id) {
         todo.completed = !todo.completed;
       }
@@ -52,20 +53,22 @@ class App extends Component {
     this.setState({ todos });
   };
 
-  handleDeleteTodo = id => {
-    axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`).then(res =>
-      this.setState({
-        todos: this.state.todos.filter(todo => todo.id !== id)
-      })
-    );
+  handleDeleteTodo = (id) => {
+    axios
+      .delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+      .then((res) =>
+        this.setState({
+          todos: this.state.todos.filter((todo) => todo.id !== id),
+        })
+      );
   };
 
   updateTodo = (newText, id) => {
-    const todos = this.state.todos.map(todo => {
+    const todos = this.state.todos.map((todo) => {
       if (todo.id === id) {
         return {
           ...todo,
-          title: newText
+          title: newText,
         };
       } else {
         return todo;
@@ -76,7 +79,7 @@ class App extends Component {
   };
 
   render() {
-    const filterTodos = this.state.todos.filter(todo => {
+    const filterTodos = this.state.todos.filter((todo) => {
       return todo.title.indexOf(this.state.search) !== -1;
     });
 
@@ -105,4 +108,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default HomePage;
