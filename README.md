@@ -1,9 +1,7 @@
 # Todo App
 
-A simple todo application written in reactjs.
+A simple todo application written in reactjs with typescript
 
-
-## Usage
 
 ### Installation
 
@@ -28,16 +26,4 @@ Compile and build
 $ yarn build
 ```
 
-## More Info
-
-### Author
-
-Rechie Lagria
-
-### Version
-1.0.0
-
-### License
-
-This project is licensed under the MIT License
 
