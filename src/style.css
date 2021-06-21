@@ -18,7 +18,7 @@ a {
   padding: 0 1rem;
 }
 
-.btn {
+.add-btn {
   display: inline-block;
   background: #555;
   color: #fff;
@@ -27,10 +27,38 @@ a {
   cursor: pointer;
 }
 
-.btn:hover {
+.add-btn:hover {
   background: #666;
 }
 
 .is-active {
   font-weight: bold;
+}
+.header {
+  background: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+.link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.success {
+  color: #008000;
+  background: #f4f4f4;
+  border: none;
+  padding: 5px 9px;
+  float: right;
+  cursor: pointer;
+}
+
+.danger {
+  color: #ff0000;
+  background: #f4f4f4;
+  border: none;
+  padding: 5px 9px;
+  float: right;
+  cursor: pointer;
 }
